@@ -1,0 +1,8 @@
+/* Import KaTeX CSS for math rendering */
+@import 'katex/dist/katex.min.css';
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
