@@ -138,7 +138,7 @@ export function useChat() {
             console.error('Error parsing SSE message:', error);
           }
         },
-        onopen(res) {
+        onopen: async (res) => {
           // Validate response status
           if (!res.ok || res.status !== 200) {
             throw new Error(`HTTP error! status: ${res.status}`);

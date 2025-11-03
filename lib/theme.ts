@@ -1,5 +1,12 @@
 import { createTheme, type ThemeOptions } from '@mui/material/styles';
 
+// Extend MUI theme types to include 'surface' in background
+declare module '@mui/material/styles' {
+  interface TypeBackground {
+    surface?: string;
+  }
+}
+
 const PineconeColors = {
   LIGHT: {
     PRIMARY_MAIN: '#002BFF',
