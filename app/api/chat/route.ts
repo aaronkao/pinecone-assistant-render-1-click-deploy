@@ -34,9 +34,14 @@ export async function POST(req: NextRequest) {
             if (response) {
               try {
                 // SDK should return objects, but handle string case as fallback
-                const data = typeof response === 'string' 
-                  ? JSON.parse(response.replace(/^data:\s*/, '').trim()) 
-                  : response;
+                // Type response as unknown first to allow type narrowing
+                const responseValue: unknown = response;
+                let data: any;
+                if (typeof responseValue === 'string') {
+                  data = JSON.parse(responseValue.replace(/^data:\s*/, '').trim());
+                } else {
+                  data = responseValue;
+                }
 
                 if (!data) continue;
 
