@@ -32,6 +32,9 @@ Deploy a Pinecone Assistant chat interface to Vercel with one click.
      - `PINECONE_ASSISTANT_NAME` - Your Pinecone Assistant name
      - `NEXT_PUBLIC_ASSISTANT_NAME` - The name you want to be displayed for your assistant
      - `NEXT_PUBLIC_WELCOME_MESSAGE` - Your custom welcome message
+   **Optional (set after initial deploy and redploy):**
+     - `MODEL` - The model to use for chat responses. Options: `gpt-4o` (default), `gpt-4.1`, `o4-mini`, `claude-3-5-sonnet`, `claude-3-7-sonnet`, `gemini-2.5-pro`
+     - `NEXT_PUBLIC_HIDE_FILES` - Set to `true` to hide the files drawer panel completely (both desktop and mobile). Default: `false`
    - Click the Deploy button
 
 3. **Your chat interface will be live!**
@@ -75,6 +78,9 @@ If you want to preview the app locally before deploying:
    PINECONE_ASSISTANT_NAME=your-assistant-name-here
    NEXT_PUBLIC_ASSISTANT_NAME=your-assistant-name-here
    NEXT_PUBLIC_WELCOME_MESSAGE=Your custom welcome message here
+   # Optional
+   MODEL=gpt-4o
+   NEXT_PUBLIC_HIDE_FILES=false
    ```
 
 4. **Install dependencies and run:**

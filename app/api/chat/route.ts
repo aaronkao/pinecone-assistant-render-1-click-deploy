@@ -3,6 +3,30 @@ import { getAssistant } from '@/lib/pinecone';
 
 export const runtime = 'nodejs';
 
+// Valid model options
+const VALID_MODELS = [
+  'gpt-4o',
+  'gpt-4.1',
+  'o4-mini',
+  'claude-3-5-sonnet',
+  'claude-3-7-sonnet',
+  'gemini-2.5-pro',
+] as const;
+
+type ValidModel = typeof VALID_MODELS[number];
+
+function getModel(): ValidModel {
+  const envModel = process.env.MODEL;
+  
+  // If MODEL is set and valid, use it
+  if (envModel && VALID_MODELS.includes(envModel as ValidModel)) {
+    return envModel as ValidModel;
+  }
+  
+  // Fallback to default
+  return 'gpt-4o';
+}
+
 export async function POST(req: NextRequest) {
   try {
     const { messages } = await req.json();
@@ -17,6 +41,7 @@ export async function POST(req: NextRequest) {
     }
 
     const assistant = getAssistant(assistantName);
+    const model = getModel();
 
     // Sanitize messages to only include 'role' and 'content' (required by SDK)
     // The SDK rejects messages with extra properties like 'citations'
@@ -32,7 +57,7 @@ export async function POST(req: NextRequest) {
           // Use SDK's chatStream method
           const chatStream = await assistant.chatStream({
               messages: sanitizedMessages,
-              model: 'gpt-4.1',
+              model: model,
           });
 
           // Handle the stream from SDK - it returns objects directly

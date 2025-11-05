@@ -97,9 +97,9 @@ const styles = {
     width: '100%',
     flexDirection: { xs: 'column' as const, md: 'row' as const },
   },
-  chatContainer: (drawerOpen: boolean, drawerWidth: number, isMobile: boolean) => ({
+  chatContainer: (drawerOpen: boolean, drawerWidth: number, isMobile: boolean, hideFiles: boolean) => ({
     width: isMobile ? '100%' : (drawerOpen ? `calc(100% - ${drawerWidth}px)` : '100%'),
-    height: isMobile ? '60vh' : '100%',
+    height: isMobile ? (hideFiles ? '100%' : '80vh') : '100%',
     minWidth: 0,
     minHeight: isMobile ? '400px' : 'auto',
     display: 'flex',
@@ -107,10 +107,10 @@ const styles = {
     overflow: 'hidden',
     transition: isMobile ? 'none' : 'width 0.3s ease-out',
     position: 'relative' as const,
-    flex: isMobile ? '0 0 60vh' : undefined,
+    flex: isMobile ? (hideFiles ? '1 1 100%' : '0 0 80vh') : undefined,
     flexShrink: 0,
-    flexGrow: isMobile ? 0 : undefined,
-    flexBasis: isMobile ? '60vh' : undefined,
+    flexGrow: isMobile ? (hideFiles ? 1 : 0) : undefined,
+    flexBasis: isMobile ? (hideFiles ? '100%' : '80vh') : undefined,
   }),
   expandButton: {
     position: 'absolute' as const,
@@ -163,7 +163,8 @@ export default function Home() {
   });
 
   const assistantName = assistantData?.assistantName || '';
-  const [showDrawer, setShowDrawer] = useState(true);
+  const hideFiles = process.env.NEXT_PUBLIC_HIDE_FILES === 'true';
+  const [showDrawer, setShowDrawer] = useState(!hideFiles);
   const drawerWidth = useMediaQuery(`(max-width:${WIDE_PAGE_WIDTH}px)`)
     ? DRAWER_NARROW_WIDTH
     : DRAWER_WIDE_WIDTH;
@@ -171,13 +172,13 @@ export default function Home() {
 
   const hasFiles = (filesData?.files.length ?? 0) > 0;
 
-  // In mobile, always show drawer (can't collapse)
-  const effectiveShowDrawer = isMobile ? true : showDrawer;
+  // If hiding files, never show drawer
+  const effectiveShowDrawer = hideFiles ? false : (isMobile ? true : showDrawer);
 
   const drawerControls: DrawerControls = {
     show: effectiveShowDrawer,
-    onOpen: () => setShowDrawer(true),
-    onClose: () => !isMobile && setShowDrawer(false),
+    onOpen: () => !hideFiles && setShowDrawer(true),
+    onClose: () => !hideFiles && !isMobile && setShowDrawer(false),
   };
 
   return (
@@ -248,8 +249,8 @@ export default function Home() {
         )}
       </Box>
       <Box sx={styles.main}>
-        <Box sx={styles.chatContainer(showDrawer, drawerWidth, isMobile)}>
-          {!showDrawer && !isMobile && (
+        <Box sx={styles.chatContainer(hideFiles ? false : showDrawer, drawerWidth, isMobile, hideFiles)}>
+          {!hideFiles && !showDrawer && !isMobile && (
             <Tooltip title="Expand files panel">
               <IconButton
                 onClick={() => setShowDrawer(true)}
@@ -262,12 +263,14 @@ export default function Home() {
           )}
           <AssistantChat hasFiles={hasFiles} />
         </Box>
-        <Box sx={styles.drawerWrapper(showDrawer, drawerWidth, isMobile)}>
-          <AssistantDrawer
-            assistantName={assistantName}
-            controls={drawerControls}
-          />
-        </Box>
+        {!hideFiles && (
+          <Box sx={styles.drawerWrapper(showDrawer, drawerWidth, isMobile)}>
+            <AssistantDrawer
+              assistantName={assistantName}
+              controls={drawerControls}
+            />
+          </Box>
+        )}
       </Box>
     </Box>
   );
