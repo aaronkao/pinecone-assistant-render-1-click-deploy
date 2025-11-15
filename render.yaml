@@ -1,6 +1,6 @@
 version: "1"
 projects:
-- name: Pinecone Assistant Render 1-Click Deploy
+- name: Pinecone X Render 
   environments:
   - name: Production
     services:
