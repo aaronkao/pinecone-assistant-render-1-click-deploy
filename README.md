@@ -4,7 +4,7 @@ Deploy a Pinecone Assistant chat interface to Render with one click.
 
 ## 🚀 Deploy to Render
 
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy)
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https%3A%2F%2Fgithub.com%2Faaronkao%2Fpinecone-assistant-render-1-click-deploy)
 
 ![Pinecone Assistant Chat Interface](./docs/screenshot.png)
 
