@@ -1,5 +1,3 @@
-# null
-
 # Pinecone quick reference for agents
 
 > **Official docs**: [https://docs.pinecone.io/](https://docs.pinecone.io/) - For complete API reference, advanced features, and detailed guides.
