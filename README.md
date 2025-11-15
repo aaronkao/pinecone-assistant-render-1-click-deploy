@@ -1,16 +1,16 @@
 # Pinecone Assistant 1-Click Deploy
 
-Deploy a Pinecone Assistant chat interface to Vercel with one click.
+Deploy a Pinecone Assistant chat interface to Render with one click.
 
-## 🚀 Deploy to Vercel
+## 🚀 Deploy to Render
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/pinecone-io/pinecone-assistant-vercel-1-click-deploy&env=PINECONE_API_KEY,PINECONE_ASSISTANT_NAME,NEXT_PUBLIC_ASSISTANT_NAME,NEXT_PUBLIC_WELCOME_MESSAGE)
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy)
 
 ![Pinecone Assistant Chat Interface](./docs/screenshot.png)
 
 ## 🎨 Features
 
-- 🚀 **Super Simple** - Deploy your Pinecone Assistant to Vercel with one click
+- 🚀 **Super Simple** - Deploy your Pinecone Assistant to Render with one click
 - 💬 **Streaming Chat** - Real-time streaming responses from your Assistant
 - 📁 **Files Panel** - View all files uploaded to your assistant
 - 📱 **Responsive** - Works on all devices
@@ -18,24 +18,26 @@ Deploy a Pinecone Assistant chat interface to Vercel with one click.
 ### Deployment Steps
 
 1. **Click the "Deploy" button above**
-   - You'll be redirected to Vercel's deployment page
+   - You'll be redirected to Render's deployment page
    - If you're not logged in, sign in with GitHub
 
 2. **Configure your repository and set environment variables**
-   - Vercel will automatically detect this repository to clone
-   - Choose the Git account & enter the repository name you want to clone to (make the repository public if you have a personal Vercel account)
-   - Choose a Vercel team to deploy your site to
-   - Click the Create button
-   - Add your environment variables (you'll have to set all of them in Vercel) \
+   - Render will automatically detect this repository
+   - Connect your GitHub account if not already connected
+   - Select this repository from the list
+   - Choose a name for your web service
+   - Select the region closest to your users
+   - Choose a plan (Free tier available for testing)
+   - Add your environment variables in the Environment Variables section:
    **Required:**
      - `PINECONE_API_KEY` - Your Pinecone API key
      - `PINECONE_ASSISTANT_NAME` - Your Pinecone Assistant name
      - `NEXT_PUBLIC_ASSISTANT_NAME` - The name you want to be displayed for your assistant
      - `NEXT_PUBLIC_WELCOME_MESSAGE` - Your custom welcome message
-   **Optional (set after initial deploy and redploy):**
+   **Optional (set after initial deploy and redeploy):**
      - `MODEL` - The model to use for chat responses. Options: `gpt-4o` (default), `gpt-4.1`, `o4-mini`, `claude-3-5-sonnet`, `claude-3-7-sonnet`, `gemini-2.5-pro`
      - `NEXT_PUBLIC_HIDE_FILES` - Set to `true` to hide the files drawer panel completely (both desktop and mobile). Default: `false`
-   - Click the Deploy button
+   - Click the "Create Web Service" button
 
 3. **Your chat interface will be live!**
    - Once deployment completes, your chat interface will be ready to use
@@ -55,16 +57,14 @@ Before deploying, make sure you have:
    - Create a new assistant or select an existing one
    - Copy the Assistant name (this is the identifier you'll use)
 
-## 🔄 Automatic UI Updates
-
 ## 🔧 Local Preview (Optional)
 
 If you want to preview the app locally before deploying:
 
 1. **Clone this repository:**
    ```bash
-   git clone https://github.com/pinecone-io/pinecone-assistant-vercel-1-click-deploy.git
-   cd pinecone-assistant-vercel-1-click-deploy
+   git clone https://github.com/pinecone-io/pinecone-assistant-render-1-click-deploy.git
+   cd pinecone-assistant-render-1-click-deploy
    ```
 
 2. **Create `.env` file:**
@@ -94,7 +94,7 @@ If you want to preview the app locally before deploying:
 ## 📚 Resources
 
 - [Pinecone Assistant Docs](https://docs.pinecone.io/guides/assistant/)
-- [Vercel Deployment Docs](https://vercel.com/docs)
+- [Render Deployment Docs](https://render.com/docs)
 - [Next.js Documentation](https://nextjs.org/docs)
 
 ## 📝 License
