@@ -23,7 +23,6 @@ projects:
       - key: MODEL
         sync: false
       region: oregon
-      nodeVersion: 20
       buildCommand: npm install && npm run build
       startCommand: npm run start
       autoDeployTrigger: commit
