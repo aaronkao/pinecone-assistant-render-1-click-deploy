@@ -1,28 +1,23 @@
-version: "1"
-projects:
-- name: Pinecone X Render 
-  environments:
-  - name: Production
-    services:
-    - type: web
-      name: pinecone-assistant-render-1-click-deploy
-      runtime: node
-      repo: https://github.com/aaronkao/pinecone-assistant-render-1-click-deploy
-      plan: free
-      envVars:
-      - key: PINECONE_ASSISTANT_NAME
-        sync: false
-      - key: PINECONE_API_KEY
-        sync: false
-      - key: NEXT_PUBLIC_WELCOME_MESSAGE
-        sync: false
-      - key: NEXT_PUBLIC_HIDE_FILES
-        sync: false
-      - key: NEXT_PUBLIC_ASSISTANT_NAME
-        sync: false
-      - key: MODEL
-        sync: false
-      region: oregon
-      buildCommand: npm install && npm run build
-      startCommand: npm run start
-      autoDeployTrigger: commit
+services:
+  - type: web
+    name: pinecone-assistant-render-1-click-deploy
+    runtime: node
+    repo: https://github.com/aaronkao/pinecone-assistant-render-1-click-deploy
+    plan: free
+    envVars:
+    - key: PINECONE_ASSISTANT_NAME
+      sync: false
+    - key: PINECONE_API_KEY
+      sync: false
+    - key: NEXT_PUBLIC_WELCOME_MESSAGE
+      sync: false
+    - key: NEXT_PUBLIC_HIDE_FILES
+      sync: false
+    - key: NEXT_PUBLIC_ASSISTANT_NAME
+      sync: false
+    - key: MODEL
+      sync: false
+    region: oregon
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    autoDeployTrigger: commit
