@@ -1,17 +1,25 @@
 import { Pinecone } from '@pinecone-database/pinecone';
 
-if (!process.env.PINECONE_API_KEY) {
-  throw new Error('PINECONE_API_KEY environment variable is not set');
-}
+let pinecone: Pinecone | null = null;
 
-const pinecone = new Pinecone({
-  apiKey: process.env.PINECONE_API_KEY,
-});
+function getPineconeClient(): Pinecone {
+  if (!pinecone) {
+    const apiKey = process.env.PINECONE_API_KEY;
+    if (!apiKey) {
+      throw new Error('PINECONE_API_KEY environment variable is not set');
+    }
+    pinecone = new Pinecone({
+      apiKey: apiKey,
+    });
+  }
+  return pinecone;
+}
 
 export function getAssistant(assistantName: string) {
   if (!assistantName) {
     throw new Error('Assistant name is required');
   }
-  return pinecone.Assistant(assistantName);
+  const client = getPineconeClient();
+  return client.Assistant(assistantName);
 }
 
