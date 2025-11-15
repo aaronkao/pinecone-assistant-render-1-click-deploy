@@ -8,14 +8,14 @@ Deploy a Pinecone Assistant chat interface to Render with one click.
 
 ![Pinecone Assistant Chat Interface](./docs/screenshot.png)
 
-## 🎨 Features
+### 🎨 Features
 
 - 🚀 **Super Simple** - Deploy your Pinecone Assistant to Render with one click
 - 💬 **Streaming Chat** - Real-time streaming responses from your Assistant
 - 📁 **Files Panel** - View all files uploaded to your assistant
 - 📱 **Responsive** - Works on all devices
 
-### Deployment Steps
+## Deployment Steps
 
 1. **Click the "Deploy" button above**
    - You'll be redirected to Render's deployment page
@@ -42,7 +42,7 @@ Deploy a Pinecone Assistant chat interface to Render with one click.
 3. **Your chat interface will be live!**
    - Once deployment completes, your chat interface will be ready to use
 
-## 📋 Getting Your Pinecone Credentials
+### 📋 Getting Your Pinecone Credentials
 
 Before deploying, make sure you have:
 
@@ -57,7 +57,7 @@ Before deploying, make sure you have:
    - Create a new assistant or select an existing one
    - Copy the Assistant name (this is the identifier you'll use)
 
-## 🔧 Local Preview (Optional)
+### 🔧 Local Preview (Optional)
 
 If you want to preview the app locally before deploying:
 

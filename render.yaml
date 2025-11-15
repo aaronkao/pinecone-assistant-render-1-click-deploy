@@ -22,9 +22,8 @@ projects:
         sync: false
       - key: MODEL
         sync: false
-      - key: PORT
-        sync: false
       region: oregon
-      buildCommand: npm install; npm run build
+      nodeVersion: 20
+      buildCommand: npm install && npm run build
       startCommand: npm run start
       autoDeployTrigger: commit
