@@ -1,6 +1,6 @@
 # Pinecone Assistant 1-Click Deploy
 
-Deploy a Pinecone Assistant chat interface to Render with one click.
+Deploy a [Pinecone Assistant](https://www.pinecone.io/product/assistant/) chat interface to Render with one click.
 
 ### 🎨 Features
 
